@@ -98,17 +98,20 @@ this environment.
    sudo apt install python3-scapy python3-pip python3-pygraphviz virtualenv
    sudo apt install git tmux vim
    ```
-
+   
+   When installing wireshark, you'll be prompted to choose whether unprivileged users should be allowed to capture packets.
+   Either choose `no` or follow the extra instructions in step 14.
+   
    Of course, you are welcome to install whatever other tools and utilities
    that you think will improve your development environment.
 
 14. Run the following to give `tcpdump` and `wireshark` targeted capabilities, so an
    unprivileged user can run them to sniff network packets with elevating to `root`:
    ```
-   sudo setcap cap_net_raw=eip /usr/bin/tcpdump; sudo setcap cap_net_raw=eip /usr/bin/wireshark
+   sudo setcap cap_net_raw=eip /usr/bin/tcpdump; sudo setcap cap_net_raw=eip /usr/bin/wireshark; sudo setcap cap_net_raw=eip /usr/bin/dumpcap
    ```
    
-   Additionally, you will need to add your user to the `wireshark` group:
+   Additionally, if you configured wireshark to allow non-superusers to capture packets, you will need to add your user to the `wireshark` group:
    
    ```
    sudo usermod -a -G wireshark username
