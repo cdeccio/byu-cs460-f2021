@@ -107,6 +107,12 @@ this environment.
    ```
    sudo setcap cap_net_raw=eip /usr/bin/tcpdump; sudo setcap cap_net_raw=eip /usr/bin/wireshark
    ```
+   
+   Additionally, you will need to add your user to the `wireshark` group:
+   
+   ```
+   sudo usermod -a -G wireshark username
+   ```
 
 15. Run the following command to modify the behavior of `sudo` by editing
    `/etc/sudoers`:
